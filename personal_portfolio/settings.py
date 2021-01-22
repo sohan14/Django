@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '=takbz5n2v#rd1-r7ljyc6o=h(*fdmt6hozu(v%rizmp8x_#$q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["sohan14.phytonanywhere.com"]
 
 
 # Application definition
@@ -121,5 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+try:
+    from .local_settings import *
+except ImportError:
+    print('no local file.')
